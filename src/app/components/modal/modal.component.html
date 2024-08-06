@@ -1,0 +1,121 @@
+<div
+  class="relative z-50"
+  aria-labelledby="modal-title"
+  role="dialog"
+  aria-modal="true"
+>
+  <div
+    class="fixed inset-0 bg-gray-500 bg-opacity-90"
+    aria-hidden="true"
+  ></div>
+
+  <div class="fixed inset-0 z-10 overflow-y-auto">
+    <div class="flex min-h-full items-center justify-center p-4">
+      <div
+        class="relative bg-white rounded-lg shadow-xl sm:w-full sm:max-w-lg"
+      >
+        <div class="px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+          <div class="sm:flex sm:items-start">
+            <div class="text-center sm:text-left w-full">
+              <h3
+                class="text-lg font-semibold leading-6 text-gray-900"
+                id="modal-title"
+              >
+                Nuevo usuario
+              </h3>
+              <form [formGroup]="userForm" class="mt-4 space-y-4">
+                <div class="flex flex-col">
+                  <label
+                    for="user"
+                    class="text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+                  >
+                    Usuario
+                  </label>
+                  <input
+                    type="text"
+                    id="user"
+                    formControlName="user"
+                    class="shadow-sm rounded-md w-full px-3 py-2 border border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                    placeholder="Usuario"
+                    required
+                  />
+                  @if (true) {
+                    <p class="text-xs text-red-600 mt-1" >Usuario es requerido.</p>
+                  }
+                  
+                </div>
+                <div class="flex flex-col">
+                  <label
+                    for="pass"
+                    class="text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+                  >
+                    Contraseña
+                  </label>
+                  <input
+                    type="password"
+                    id="pass"
+                    formControlName="pass"
+                    class="shadow-sm rounded-md w-full px-3 py-2 border border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                    placeholder="Contraseña"
+                    required
+                  />
+                  <p class="text-xs text-red-600 mt-1" >Contraseña es requerida.</p>
+                </div>
+                <div class="flex flex-col">
+                  <label
+                    for="Rpassword"
+                    class="text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+                  >
+                    Repetir Contraseña
+                  </label>
+                  <input
+                    type="password"
+                    id="Rpassword"
+                    formControlName="Rpassword"
+                    class="shadow-sm rounded-md w-full px-3 py-2 border border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                    placeholder="Repetir Contraseña"
+                    required
+                  />
+                  <p class="text-xs text-red-600 mt-1" >Las contraseñas deben coincidir.</p>
+                </div>
+                <div class="flex flex-col">
+                  <label
+                    for="role"
+                    class="text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+                  >
+                    Role
+                  </label>
+                  <input
+                    type="text"
+                    id="role"
+                    formControlName="role"
+                    class="shadow-sm rounded-md w-full px-3 py-2 border border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                    placeholder="Role"
+                    required
+                  />
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="bg-gray-50 px-4 py-3 flex justify-end space-x-2">
+          <button
+          (click)="closeModal()"
+          type="button"
+          class="mt-3 sm:mt-0 w-full sm:w-auto inline-flex justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+          >
+          Cancelar
+        </button>
+
+        <button
+          (click)="crearUsuario()"
+          type="button"
+          class="w-full sm:w-auto inline-flex justify-center rounded-md bg-green-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-green-500"
+        >
+          Guardar
+        </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
