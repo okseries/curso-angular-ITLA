@@ -1,0 +1,53 @@
+<div class="w-full min-h-full p-6 shadow-lg rounded-lg">
+  <div
+    class="w-full h-full shadow-inner max-h-[calc(100vh-200px)] bg-white rounded-lg overflow-auto"
+  >
+    <table class="min-w-full rounded-lg">
+      <thead class="sticky top-0 bg-slate-200">
+        <tr class="text-black uppercase text-xs font-medium">
+          @for (header of tableHeader(); track $index) {
+          <th class="py-3 px-6 text-left">{{ header }}</th>
+          } @if (rowButtons.length) {
+          <th class="py-3 px-6 text-left">Acción</th>
+          }
+        </tr>
+      </thead>
+      <tbody class="text-gray-700 text-sm max-h-svh b">
+        @for (data of tableData(); track $index) {
+        <tr class="border-b border-gray-200 hover:bg-gray-50">
+          @for (header of tableHeader(); track $index) {
+          <td class="py-3 px-6">{{ data[header] }}</td>
+          } @if (rowButtons.length) {
+          <td class="py-3 px-6 flex flex-grow space-x-2">
+            @for (button of rowButtons; track $index) {
+            <ng-container>
+              <div>
+                <button
+                  class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+                  (click)="button.action(data)"
+                >
+                  {{ button.label }}
+                </button>
+              </div>
+            </ng-container>
+            }
+          </td>
+          }
+        </tr>
+        }@empty {
+        <tr class="border-b border-gray-200 hover:bg-gray-50">
+          <td class="py-3 px-6 text-center">
+            <div class="rounded-md p-4 max-w-sm w-full mx-auto">
+              <div class="animate-pulse flex space-x-4">
+                <div class="flex-1 space-y-6 py-1">
+                  <div class="h-2 bg-slate-200 rounded"></div>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>

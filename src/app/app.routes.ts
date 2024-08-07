@@ -13,38 +13,44 @@ export const routes: Routes = [
         children:[
             
             {
-                path: 'inicio',
+                path: 'practica-1/inicio',
                 title: 'Inicio',
                 loadComponent: () => import('./pages/practica 1/mensaje/mensaje.component'),
             }, 
             {
-                path: 'nombre-edad',
+                path: 'practica-1/nombre-edad',
                 title: 'Nombre y Edad',
                 loadComponent: () => import('./pages/practica 1/nombre-edad/nombre-edad.component'),
             },
             {
-                path: 'resta-producto',
+                path: 'practica-1/resta-producto',
                 title: 'Resta y Producto',
                 loadComponent: () => import('./pages/practica 1/resta-producto/resta-producto.component'),
             },
             {
-                path: 'area',
+                path: 'practica-1/area',
                 title: 'Area',
                 loadComponent: () => import('./pages/practica 1/area-circulo/area-circulo.component'),
             },
             {
-                path: 'condicional',
+                path: 'practica-1/condicional',
                 title: 'Condicional',
                 loadComponent: () => import('./pages/practica 1/condicional/condicional.component'),
             },
             {
-                path: 'fecha',
+                path: 'practica-1/fecha',
                 title: 'Fecha',
                 loadComponent: () => import('./pages/practica 1/fecha/fecha.component'),
             },
 
             {
-                path: '', redirectTo: 'inicio', pathMatch: 'full'
+                path: 'practica-2/persona',
+                title: 'Personas',
+                loadComponent: () => import('./pages/practica 2/persona/persona.component'),
+            },
+
+            {
+                path: '', redirectTo: 'practica-1/inicio', pathMatch: 'full'
             }
         ] 
     },

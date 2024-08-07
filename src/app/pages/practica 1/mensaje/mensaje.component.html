@@ -1,2 +1,13 @@
-
-<app-card [titulo]="titulo" [body]="body"/>
+<app-card [titulo]="titulo">
+    <h4 class="text-lg text-gray-800 mb-4">Bienvenido</h4>
+    <p class="text-lg text-gray-600 text-center">
+      Este proyecto ha sido desarrollado en el curso de Angular impartido por el
+      profesor:
+      <span class="font-semibold text-gray-800">{{profesor}}</span>.
+    </p>
+    <p class="text-lg text-gray-600 text-center mt-2">
+      Estudiante:
+      <span class="font-semibold text-gray-800">{{estudiante}}</span>.
+    </p>
+    
+</app-card>

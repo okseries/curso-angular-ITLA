@@ -1,1 +1,8 @@
-<p>condicional works!</p>
+<app-card [titulo]="login().titulo">
+    <p [ngClass]="isLoggedIn ? 'transition ease-out duration-300 transform opacity-100 scale-100' : 'transition ease-in duration-75 transform opacity-0 scale-95'">
+      El estado actual es <span class="font-bold">{{isLoggedIn}}</span>, por eso se muestra este contenido.
+    </p>
+
+    <button class="mt-4 rounded p-2 bg-blue-600 hover:bg-blue-700 text-white" (click)="login()"> {{isLoggedIn ? 'Ocultar' : 'Mostrar'}}</button>
+  </app-card>
+  

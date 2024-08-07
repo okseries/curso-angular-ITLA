@@ -13,15 +13,35 @@ import { DropdownComponent } from '../../../components/dropdown/dropdown.compone
   templateUrl: './sidemenu.component.html',
   styleUrl: './sidemenu.component.css'
 })
-export class SidemenuComponent  {
-public menuItems = routes
-.map(route => route.children ?? [])
-.flat()
-.filter(route => route && route.path)
-.filter(route => !route.path?.includes('app/auth/login'))
+export class SidemenuComponent {
 
-dropdownConfig: any = {
-  buttonTitle: 'Opciones',
-  items: this.menuItems};
+  public menuItems = routes
+    .map(route => route.children ?? [])
+    .flat()
+    .filter(route => route && route.path)
+    .filter(route => !route.path?.includes('app/auth/login'))
+    .filter(route => !route.path?.includes('practica-2'))
+
+
+
+    public menuItemsPractica2 = routes
+    .map(route => route.children ?? [])
+    .flat()
+    .filter(route => route && route.path)
+    .filter(route => !route.path?.includes('app/auth/login'))
+    .filter(route => !route.path?.includes('practica-1'))
+
+  public buttonTitle: string = 'Práctica -1'
+  public buttonTitlePractica2: string = 'Práctica -2'
+
+  dropdownConfigPractica1: any = {
+    buttonTitle: this.buttonTitle,
+    items: this.menuItems
+  };
+
+  dropdownConfigPractica2: any = {
+    buttonTitle: this.buttonTitlePractica2,
+    items: this.menuItemsPractica2
+  };
 
 }

@@ -1,4 +1,5 @@
 import { Component, input } from '@angular/core';
+import { CardComponent } from '../../../components/card/card.component';
 
 
 interface PersonaI {
@@ -14,7 +15,7 @@ const data: PersonaI ={
 @Component({
   selector: 'app-nombre-edad',
   standalone: true,
-  imports: [],
+  imports: [CardComponent],
   templateUrl: './nombre-edad.component.html',
   styleUrl: './nombre-edad.component.css'
 })
@@ -22,6 +23,10 @@ export default class NombreEdadComponent {
 
   public persona: PersonaI = data;
 
-  //public persona = input.required()
+  public titulo: string = 'Detalles de la Persona';
+
+  
+  
+
 
 }

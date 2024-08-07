@@ -10,6 +10,5 @@ import { Component, input } from '@angular/core';
 export class CardComponent {
 
   public titulo = input.required<string>();
-  public body = input.required<any>();
 
 }

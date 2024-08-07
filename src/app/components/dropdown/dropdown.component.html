@@ -1,3 +1,4 @@
+
 <div class="flex flex-col gap-1 rounded-lg w-full shadow-lg">
   <div>
     <a
@@ -22,33 +23,34 @@
         <p
           class="block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize"
         >
-          Practica 1
+          {{config().buttonTitle}}
+          
         </p>
       </div>
     </a>
   </div>
 
   <div
-    [ngClass]="menuOpen ? 'transition ease-out duration-300 transform opacity-100 scale-100' : 'transition ease-in duration-75 transform opacity-0 scale-95'"
-    class="shadow-inner p-4 bg-gradient-to-br from-gray-900 to-gray-950 w-full rounded-b-lg"
+    [ngClass]="menuOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'"
+    class="overflow-hidden transition-all duration-300 ease-in-out bg-gradient-to-br from-gray-900 to-gray-950 w-full rounded-b-lg"
   >
-    <ul class="mb-4 flex flex-col gap-1">
+    <ul class="mb-4 flex flex-col gap-1 p-4">
       @for (item of config().items; track $index) {
-        <li >
-          <a
-            [routerLink]="[item.path]"
-            routerLinkActive="bg-blue-800"
-            class="middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-white hover:bg-white/10 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize"
+      <li >
+        <a
+          [routerLink]="[item.path]"
+          routerLinkActive="bg-blue-800"
+          class="middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-white hover:bg-white/10 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize"
+        >
+          <p
+            class="block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize"
           >
-            <p
-              class="block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize"
-            >
-              {{ item.title }}
-            </p>
-          </a>
-        </li>
-      }
-     
+            {{ item.title }}
+          </p>
+        </a>
+      </li>
+    }
     </ul>
   </div>
 </div>
+
