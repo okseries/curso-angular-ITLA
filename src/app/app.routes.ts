@@ -1,13 +1,10 @@
 import { Routes } from '@angular/router';
-import { AuthGuard } from './core/guards/auth.guard';
-import { AuthenticatedGuard } from './core/guards/authenticated.guard';
 
 export const routes: Routes = [
     {
         path: 'app/auth/login',
         title: 'Login',
         loadComponent: () => import('./auth/login/login.component'),
-        //canActivate: [AuthenticatedGuard]
     },
     {
         path: 'app',
@@ -19,13 +16,31 @@ export const routes: Routes = [
                 path: 'inicio',
                 title: 'Inicio',
                 loadComponent: () => import('./pages/practica 1/mensaje/mensaje.component'),
-                //canActivate: [AuthGuard]
             }, 
             {
-                path: 'usuarios',
-                title: 'Usuarios',
-                loadComponent: () => import('./pages/users/users.component'),
-                //canActivate: [AuthGuard]
+                path: 'nombre-edad',
+                title: 'Nombre y Edad',
+                loadComponent: () => import('./pages/practica 1/nombre-edad/nombre-edad.component'),
+            },
+            {
+                path: 'resta-producto',
+                title: 'Resta y Producto',
+                loadComponent: () => import('./pages/practica 1/resta-producto/resta-producto.component'),
+            },
+            {
+                path: 'area',
+                title: 'Area',
+                loadComponent: () => import('./pages/practica 1/area-circulo/area-circulo.component'),
+            },
+            {
+                path: 'condicional',
+                title: 'Condicional',
+                loadComponent: () => import('./pages/practica 1/condicional/condicional.component'),
+            },
+            {
+                path: 'fecha',
+                title: 'Fecha',
+                loadComponent: () => import('./pages/practica 1/fecha/fecha.component'),
             },
 
             {

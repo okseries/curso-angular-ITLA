@@ -1,4 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
+
+
+interface PersonaI {
+  nombre: string;
+  edad: number;
+}
+
+const data: PersonaI ={
+  nombre: 'Alan Ross',
+  edad: 28,
+}
 
 @Component({
   selector: 'app-nombre-edad',
@@ -8,5 +19,9 @@ import { Component } from '@angular/core';
   styleUrl: './nombre-edad.component.css'
 })
 export default class NombreEdadComponent {
+
+  public persona: PersonaI = data;
+
+  //public persona = input.required()
 
 }
