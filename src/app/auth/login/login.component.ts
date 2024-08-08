@@ -38,10 +38,11 @@ export default class LoginComponent {
         role: userFound?.role, 
       }
 
-      //aqui guardamos el objeto en el localStorage para que con un guard podamos verificar si hay un usuario logueado
-      localStorage.setItem('usuarioAutenticado', JSON.stringify(usuarioLogeado));
+      
 
       if (userFound) {
+        //aqui guardamos el objeto en el localStorage para que con un guard podamos verificar si hay un usuario logueado
+      localStorage.setItem('usuarioAutenticado', JSON.stringify(usuarioLogeado));
         //se limpia el formulario
         this.loginForm.reset();
 

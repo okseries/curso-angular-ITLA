@@ -14,7 +14,7 @@ export const routes: Routes = [
         path: 'app/auth/register',
         title: 'Register',
         loadComponent: () => import('./auth/register/register.component'),
-        canActivate: [AuthGuard]
+        
     },
     {
         path: 'app',
