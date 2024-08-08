@@ -1,59 +1,58 @@
-import { Component, inject } from '@angular/core';
-import { AuthService } from '../../core/services/auth.service';
-import { Router } from '@angular/router';
-import {FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-
+import { Router, RouterModule } from '@angular/router';
+import { UsuarioInterface } from '../../interfaces/interface';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, RouterModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
 export default class LoginComponent {
 
-  form!: FormGroup; // Uso del modificador de aseguramiento
-  private fb: FormBuilder; // Declaración de fb
-
-  constructor(fb: FormBuilder, private authService: AuthService, private router: Router ) {
-    this.fb = fb; // Inicialización de fb en el constructor
+  constructor( private router: Router ) {
   }
 
-  ngOnInit(): void {
-    this.form = this.fb.group({
-      user: ['', [Validators.required]],
-      password: ['', [Validators.required]],
-      remember: [false]
-    });
-  }
 
-  
-  
-  favoriteColorControl = new FormControl('');
-  name = new FormControl('');
-  
-  
-  
-  
-  login(): void {
-    if (true) {
-      const formData = this.form.value;
-      
-      const data = {
-        user: formData.user,
-        password: formData.password,
+
+  public loginError: boolean = false;
+  public errorMessage: string = '';
+
+  public loginForm = new FormGroup({
+    user: new FormControl(''),
+    password: new FormControl(''),
+  });
+
+  login() {
+    const usuario = this.loginForm.value;
+
+    // Obtiene todos los usuarios desde localStorage y los parsea a un array
+    const usuarios: UsuarioInterface[] = JSON.parse(localStorage.getItem('usuarios') || '[]');
+
+    if (usuarios.length > 0) {
+      // Busca el usuario que coincida con el nombre de usuario y la contraseña ingresados
+      const userFound = usuarios.find(u => u.user === usuario.user && u.password === usuario.password);
+
+      if (userFound) {
+        //se limpia el formulario
+        this.loginForm.reset();
+
+        //redireccionamos a la página principal
+
+        this.router.navigate(['/'])
+
+      } else {
+        console.log('Usuario o contraseña incorrectos');
+        this.errorMessage = 'Usuario o contraseña incorrectos';
+        this.loginError = true;
       }
-      console.log(' Data:', data);
-
-      this.authService.login(data).subscribe({
-        next: ()=> this.router.navigate(['/dasboard']),
-        error: (err) => console.log('Error al iniciar sesion', err)
-      })
-
     } else {
-      console.log('Formulario inválido');
+      console.log('No se encontraron usuarios guardados');
+      this.errorMessage = 'No se encontraron usuarios';
+      this.loginError = true;
     }
   }
 
