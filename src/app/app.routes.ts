@@ -7,6 +7,11 @@ export const routes: Routes = [
         loadComponent: () => import('./auth/login/login.component'),
     },
     {
+        path: 'app/auth/register',
+        title: 'Register',
+        loadComponent: () => import('./auth/register/register.component'),
+    },
+    {
         path: 'app',
         loadComponent: () => import('./layout/layout.component'),
        
@@ -47,6 +52,11 @@ export const routes: Routes = [
                 path: 'practica-2/persona',
                 title: 'Personas',
                 loadComponent: () => import('./pages/practica 2/persona/persona.component'),
+            },
+            {
+                path: 'practica-2/formulario/reactivo',
+                title: 'Formulario',
+                loadComponent: () => import('./components/formulario/formularios/reactivo/reactivo.component'),
             },
 
             {

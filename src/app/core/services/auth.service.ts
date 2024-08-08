@@ -11,22 +11,25 @@ import { LoginI } from '../../interfaces/interface';
 })
 export  class AuthService {
 
-  private LOGIN_URL = 'http://localhost:3000/api/auth/v1/login';
+  private usuariosUrl = '/usuarios.json';
   private tokenKey = 'authToken';
 
   constructor( private httpClient: HttpClient, private router: Router) { }
   
 
-  login(userData: LoginI): Observable<any>{
-    return this.httpClient.post<any>(this.LOGIN_URL, userData).
-    pipe(tap(response => {
-      if (response.access_token) {
-        console.log(response.access_token);
-        this.setToken(response.access_token)
-        console.log(this.isAuthenticated());
-        
-      }
-    }));
+  login(userData: LoginI): Observable<any> {
+    return this.httpClient.get<any[]>(this.usuariosUrl).pipe(
+      tap(usuarios => {
+        const user = usuarios.find(u => u.user === userData.user && u.password === userData.password);
+        if (user) {
+          const token = 'static-token'; // Puedes generar un token estático o dinámico aquí
+          this.setToken(token);
+          console.log(this.isAuthenticated());
+        } else {
+          throw new Error('Invalid credentials');
+        }
+      })
+    );
   }
 
   private setToken(token: string): void {

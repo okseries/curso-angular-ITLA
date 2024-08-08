@@ -12,11 +12,7 @@ import { UsuarioInterface } from '../../interfaces/interface';
   styleUrl: './login.component.css'
 })
 export default class LoginComponent {
-
-  constructor( private router: Router ) {
-  }
-
-
+  constructor( private router: Router ) {}
 
   public loginError: boolean = false;
   public errorMessage: string = '';
@@ -41,7 +37,6 @@ export default class LoginComponent {
         this.loginForm.reset();
 
         //redireccionamos a la página principal
-
         this.router.navigate(['/'])
 
       } else {
