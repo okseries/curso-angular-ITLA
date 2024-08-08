@@ -56,7 +56,7 @@ export default class LoginComponent {
       }
     } else {
       console.log('No se encontraron usuarios guardados');
-      this.errorMessage = 'No se encontraron usuarios';
+      this.errorMessage = 'No se encontro el usuario';
       this.loginError = true;
     }
   }
