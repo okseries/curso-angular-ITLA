@@ -4,10 +4,12 @@ import { AuthService } from '../services/auth.service';
 
 export const AuthenticatedGuard: CanActivateFn = (route, state) => {
 
-  const authService = inject(AuthService);
-  const rouer = inject(Router);
-  if (authService.isAuthenticated()) {
-    return rouer.navigate(['/'])
+  const router = inject(Router);
+  const usuarioAutenticado = localStorage.getItem('usuarioAutenticado');
+  
+  if (usuarioAutenticado) {
+    return router.navigate(['/'])
   }
   return true
+
 };

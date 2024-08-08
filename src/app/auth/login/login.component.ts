@@ -32,6 +32,15 @@ export default class LoginComponent {
       // Busca el usuario que coincida con el nombre de usuario y la contraseña ingresados
       const userFound = usuarios.find(u => u.user === usuario.user && u.password === usuario.password);
 
+      //creamos una especie de objeto que va a funcionar casi casi como un token
+      const usuarioLogeado = {
+        usuario: userFound?.user, 
+        role: userFound?.role, 
+      }
+
+      //aqui guardamos el objeto en el localStorage para que con un guard podamos verificar si hay un usuario logueado
+      localStorage.setItem('usuarioAutenticado', JSON.stringify(usuarioLogeado));
+
       if (userFound) {
         //se limpia el formulario
         this.loginForm.reset();

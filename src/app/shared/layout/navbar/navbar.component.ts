@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AuthService } from '../../../core/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -9,11 +9,12 @@ import { AuthService } from '../../../core/services/auth.service';
   styleUrl: './navbar.component.css'
 })
 export class NavbarComponent {
-
-  constructor(private authService:  AuthService){}
+  constructor( private router: Router){}
 
   logout(): void{
-   this.authService.logout()
+    //aqui se remueve el dique token y se redirecciona al login
+    localStorage.removeItem('usuarioAutenticado');
+        this.router.navigate(['/app/auth/login'])
   }
 
 }
